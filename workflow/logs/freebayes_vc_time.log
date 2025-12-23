@@ -1,0 +1,23 @@
+	Command being timed: "freebayes-parallel test/tools_result/freebayes/regions.txt 64 -f test/reference/ref.fa test/align/ecoli_align.bam --pooled-continuous"
+	User time (seconds): 25776.68
+	System time (seconds): 35.98
+	Percent of CPU this job got: 3645%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 11:48.16
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 270144
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 6413036
+	Voluntary context switches: 66421
+	Involuntary context switches: 815899
+	Swaps: 0
+	File system inputs: 205480
+	File system outputs: 132408
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

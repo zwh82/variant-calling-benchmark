@@ -1,0 +1,131 @@
+[00:45:47] This is snippy 4.6.0
+[00:45:47] Written by Torsten Seemann
+[00:45:47] Obtained from https://github.com/tseemann/snippy
+[00:45:47] Detected operating system: linux
+[00:45:47] Enabling bundled linux tools.
+[00:45:47] Found bwa - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/bwa
+[00:45:47] Found bcftools - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/bcftools
+[00:45:47] Found samtools - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/samtools
+[00:45:47] Found java - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/java
+[00:45:47] Found snpEff - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/snpEff
+[00:45:47] Found samclip - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/samclip
+[00:45:47] Found seqtk - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/seqtk
+[00:45:47] Found parallel - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/parallel
+[00:45:47] Found freebayes - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/freebayes
+[00:45:47] Found freebayes-parallel - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/freebayes-parallel
+[00:45:47] Found fasta_generate_regions.py - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/fasta_generate_regions.py
+[00:45:48] Found vcfstreamsort - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/vcfstreamsort
+[00:45:48] Found vcfuniq - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/vcfuniq
+[00:45:48] Found vcffirstheader - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/vcffirstheader
+[00:45:48] Found gzip - /usr/bin/gzip
+[00:45:48] Found vt - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/vt
+[00:45:48] Found snippy-vcf_to_tab - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/snippy-vcf_to_tab
+[00:45:48] Found snippy-vcf_report - /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/snippy-vcf_report
+[00:45:48] Checking version: samtools --version is >= 1.7 - ok, have 1.20
+[00:45:48] Checking version: bcftools --version is >= 1.7 - ok, have 1.21
+[00:45:49] Checking version: freebayes --version is >= 1.1 - ok, have 1.3.6
+[00:45:53] Checking version: snpEff -version is >= 4.3 - ok, have 5.0
+[00:45:53] Checking version: bwa is >= 0.7.12 - ok, have 0.7.18
+[00:45:53] Using reference: /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/reference/ref.fa
+[00:45:53] Treating reference as 'fasta' format.
+[00:45:53] Will use 8 CPU cores.
+[00:45:53] Using BAM file '/home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/snippy/ecoli_withRG.bam' instead of aligning reads.
+[00:45:53] Creating folder: test/tools_result/snippy/ecoli
+[00:45:53] Changing working directory: test/tools_result/snippy/ecoli
+[00:45:53] Creating reference folder: reference
+[00:45:53] Extracting FASTA and GFF from reference.
+[00:45:53] Wrote 3 sequences to ref.fa
+[00:45:53] Wrote 0 features to ref.gff
+[00:45:53] Freebayes will process 15 chunks of 379205 bp, 8 chunks at a time.
+[00:45:53] Using BAM RG (Read Group) ID: ecoli
+[00:45:53] Running: samtools faidx reference/ref.fa 2>> snps.log
+[00:45:53] Running: mkdir -p reference/genomes && cp -f reference/ref.fa reference/genomes/ref.fa 2>> snps.log
+[00:45:53] Running: ln -sf reference/ref.fa . 2>> snps.log
+[00:45:53] Running: ln -sf reference/ref.fa.fai . 2>> snps.log
+[00:45:53] Running: mkdir -p reference/ref && gzip -c reference/ref.gff > reference/ref/genes.gff.gz 2>> snps.log
+[00:45:53] Running: samtools view -h -O SAM \/home\/work\/wenhai\/wh\-github\/variant\-calling\-benchmark\/workflow\/test\/tools_result\/snippy\/ecoli_withRG\.bam | samclip --max 10 --ref reference/ref.fa.fai | samtools sort -n -l 0 -T /tmp --threads 3 -m 2000M | samtools fixmate -m --threads 3 - - | samtools sort -l 0 -T /tmp --threads 3 -m 2000M | samtools markdup -T /tmp --threads 3 -r -s - - > snps.bam 2>> snps.log
+[samclip] samclip 0.4.0 by Torsten Seemann (@torstenseemann)
+[samclip] Loading: reference/ref.fa.fai
+[samclip] Found 3 sequences in reference/ref.fa.fai
+[samclip] Total SAM records 88369, removed 20484, allowed 50563, passed 67885
+[samclip] Header contained 10 lines
+[samclip] Done.
+[bam_sort_core] merging from 0 files and 3 in-memory blocks...
+[bam_sort_core] merging from 0 files and 3 in-memory blocks...
+[00:46:09] Running: samtools index snps.bam 2>> snps.log
+[00:46:11] Running: fasta_generate_regions.py reference/ref.fa.fai 379205 > reference/ref.txt 2>> snps.log
+[00:46:11] Running: freebayes-parallel reference/ref.txt 8 -p 2 -P 0 -C 2 -F 0.05 --min-coverage 10 --min-repeat-entropy 1.0 -q 13 -m 60 --strict-vcf   -f reference/ref.fa snps.bam > snps.raw.vcf 2>> snps.log
+[00:56:05] Running: bcftools view --include 'QUAL>=100 && FMT/DP>=10 && (FMT/AO)/(FMT/DP)>=0' snps.raw.vcf  | vt normalize -r reference/ref.fa - | bcftools annotate --remove '^INFO/TYPE,^INFO/DP,^INFO/RO,^INFO/AO,^INFO/AB,^FORMAT/GT,^FORMAT/DP,^FORMAT/RO,^FORMAT/AO,^FORMAT/QR,^FORMAT/QA,^FORMAT/GL' > snps.filt.vcf 2>> snps.log
+normalize v0.5
+
+options:     input VCF file                                  -
+         [o] output VCF file                                 -
+         [w] sorting window size                             10000
+         [m] no fail on masked reference inconsistency       false
+         [n] no fail on reference inconsistency              false
+         [q] quiet                                           false
+         [d] debug                                           false
+         [r] reference FASTA file                            reference/ref.fa
+
+
+stats: biallelic
+          no. left trimmed                      : 36
+          no. right trimmed                     : 1204
+          no. left and right trimmed            : 61
+          no. right trimmed and left aligned    : 0
+          no. left aligned                      : 0
+
+       total no. biallelic normalized           : 1301
+
+       multiallelic
+          no. left trimmed                      : 0
+          no. right trimmed                     : 0
+          no. left and right trimmed            : 0
+          no. right trimmed and left aligned    : 0
+          no. left aligned                      : 0
+
+       total no. multiallelic normalized        : 0
+
+       total no. variants normalized            : 1301
+       total no. variants observed              : 18417
+       total no. reference observed             : 0
+
+Time elapsed: 0.15s
+
+[00:56:06] Running: cp snps.filt.vcf snps.vcf 2>> snps.log
+[00:56:06] Running: /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/snippy-vcf_to_tab --gff reference/ref.gff --ref reference/ref.fa --vcf snps.vcf > snps.tab 2>> snps.log
+[00:56:06] Running: /home/wenhai/miniconda3/envs/semi-denovo-asm2/bin/snippy-vcf_extract_subs snps.filt.vcf > snps.subs.vcf 2>> snps.log
+[00:56:07] Running: bcftools convert -Oz -o snps.vcf.gz snps.vcf 2>> snps.log
+[00:56:07] Running: bcftools index -f snps.vcf.gz 2>> snps.log
+[00:56:07] Running: bcftools consensus --sample ecoli -f reference/ref.fa -o snps.consensus.fa snps.vcf.gz 2>> snps.log
+[00:56:07] Running: bcftools convert -Oz -o snps.subs.vcf.gz snps.subs.vcf 2>> snps.log
+[00:56:07] Running: bcftools index -f snps.subs.vcf.gz 2>> snps.log
+[00:56:07] Running: bcftools consensus --sample ecoli -f reference/ref.fa -o snps.consensus.subs.fa snps.subs.vcf.gz 2>> snps.log
+[00:56:07] Running: rm -f snps.subs.vcf.gz snps.subs.vcf.gz.csi snps.subs.vcf.gz.tbi 2>> snps.log
+[00:56:07] Generating reference aligned/masked FASTA relative to reference: snps.aligned.fa
+[00:56:11] Marked 82712 heterozygous sites with 'n'
+[00:56:11] Creating extra output files: BED GFF CSV TXT HTML
+[00:56:11] Identified 18417 variants.
+[00:56:11] Result folder: test/tools_result/snippy/ecoli
+[00:56:11] Result files:
+[00:56:11] * test/tools_result/snippy/ecoli/snps.aligned.fa
+[00:56:11] * test/tools_result/snippy/ecoli/snps.bam
+[00:56:11] * test/tools_result/snippy/ecoli/snps.bam.bai
+[00:56:11] * test/tools_result/snippy/ecoli/snps.bed
+[00:56:11] * test/tools_result/snippy/ecoli/snps.consensus.fa
+[00:56:11] * test/tools_result/snippy/ecoli/snps.consensus.subs.fa
+[00:56:11] * test/tools_result/snippy/ecoli/snps.csv
+[00:56:11] * test/tools_result/snippy/ecoli/snps.filt.vcf
+[00:56:11] * test/tools_result/snippy/ecoli/snps.gff
+[00:56:11] * test/tools_result/snippy/ecoli/snps.html
+[00:56:11] * test/tools_result/snippy/ecoli/snps.log
+[00:56:11] * test/tools_result/snippy/ecoli/snps.raw.vcf
+[00:56:11] * test/tools_result/snippy/ecoli/snps.subs.vcf
+[00:56:11] * test/tools_result/snippy/ecoli/snps.tab
+[00:56:11] * test/tools_result/snippy/ecoli/snps.txt
+[00:56:11] * test/tools_result/snippy/ecoli/snps.vcf
+[00:56:11] * test/tools_result/snippy/ecoli/snps.vcf.gz
+[00:56:11] * test/tools_result/snippy/ecoli/snps.vcf.gz.csi
+[00:56:11] Walltime used: 10 minutes, 24 seconds
+[00:56:11] Did you know? Snippy is a combination of SNP, Skippy, and snappy.
+[00:56:11] Done.

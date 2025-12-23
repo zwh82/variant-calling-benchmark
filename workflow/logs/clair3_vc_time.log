@@ -1,0 +1,23 @@
+	Command being timed: "run_clair3.sh --bam_fn=test/align/ecoli_align.bam --ref_fn=test/reference/ref.fa --threads=64 --platform=ont --model_path=/home/work/wenhai/semi-denovo-asm/variant_calling/tools/rerio/clair3_models/r1041_e82_400bps_sup_v410 --output=test/tools_result/clair3/clair_res --include_all_ctgs"
+	User time (seconds): 195.58
+	System time (seconds): 14.19
+	Percent of CPU this job got: 82%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:15.50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1480240
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 2631375
+	Voluntary context switches: 862509
+	Involuntary context switches: 37790
+	Swaps: 0
+	File system inputs: 25488
+	File system outputs: 42968
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

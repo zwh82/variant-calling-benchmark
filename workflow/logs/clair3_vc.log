@@ -1,0 +1,208 @@
+[33m[WARNING] No absolute output path provided, using current directory as prefix[0m
+[INFO] CLAIR3 VERSION: v1.0.11
+[INFO] BAM FILE PATH: /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/align/ecoli_align.bam
+[INFO] REFERENCE FILE PATH: /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/reference/ref.fa
+[INFO] MODEL PATH: /home/work/wenhai/semi-denovo-asm/variant_calling/tools/rerio/clair3_models/r1041_e82_400bps_sup_v410
+[INFO] OUTPUT FOLDER: /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res
+[INFO] PLATFORM: ont
+[INFO] THREADS: 64
+[INFO] BED FILE PATH: EMPTY
+[INFO] VCF FILE PATH: EMPTY
+[INFO] CONTIGS: EMPTY
+[INFO] CONDA PREFIX: /home/wenhai/miniconda3/envs/semi-denovo-asm3
+[INFO] SAMTOOLS PATH: samtools
+[INFO] PYTHON PATH: python3
+[INFO] PYPY PATH: pypy3
+[INFO] PARALLEL PATH: parallel
+[INFO] WHATSHAP PATH: whatshap
+[INFO] LONGPHASE PATH: EMPTY
+[INFO] CHUNK SIZE: 5000000
+[INFO] FULL ALIGN PROPORTION: 0.7
+[INFO] FULL ALIGN REFERENCE PROPORTION: 0.1
+[INFO] PHASING PROPORTION: 0.7
+[INFO] MINIMUM MQ: 5
+[INFO] MINIMUM COVERAGE: 2
+[INFO] SNP AF THRESHOLD: 0.08
+[INFO] INDEL AF THRESHOLD: 0.15
+[INFO] BASE ERROR IN GVCF: 0.001
+[INFO] GQ BIN SIZE IN GVCF: 5
+[INFO] ENABLE FILEUP ONLY CALLING: False
+[INFO] ENABLE FAST MODE CALLING: False
+[INFO] ENABLE CALLING SNP CANDIDATES ONLY: False
+[INFO] ENABLE PRINTING REFERENCE CALLS: False
+[INFO] ENABLE OUTPUT GVCF: False
+[INFO] ENABLE HAPLOID PRECISE MODE: False
+[INFO] ENABLE HAPLOID SENSITIVE MODE: False
+[INFO] ENABLE INCLUDE ALL CTGS CALLING: True
+[INFO] ENABLE NO PHASING FOR FULL ALIGNMENT: False
+[INFO] ENABLE REMOVING INTERMEDIATE FILES: False
+[INFO] ENABLE LONGPHASE FOR INTERMEDIATE VCF PHASING: False
+[INFO] ENABLE PHASING FINAL VCF OUTPUT USING WHATSHAP: False
+[INFO] ENABLE PHASING FINAL VCF OUTPUT USING LONGPHASE: False
+[INFO] ENABLE HAPLOTAGGING FINAL BAM: False
+[INFO] ENABLE LONG INDEL CALLING: False
+[INFO] ENABLE C_IMPLEMENT: True
+
+[33m[WARNING] Threads setting exceeds maximum available threads 1, set threads=1[0m
++ /home/wenhai/miniconda3/envs/semi-denovo-asm3/bin/scripts/clair3_c_impl.sh --bam_fn /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/align/ecoli_align.bam --ref_fn /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/reference/ref.fa --threads 1 --model_path /home/work/wenhai/semi-denovo-asm/variant_calling/tools/rerio/clair3_models/r1041_e82_400bps_sup_v410 --platform ont --output /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res --bed_fn=EMPTY --vcf_fn=EMPTY --ctg_name=EMPTY --sample_name=SAMPLE --chunk_num=0 --chunk_size=5000000 --samtools=samtools --python=python3 --pypy=pypy3 --parallel=parallel --whatshap=whatshap --qual=2 --var_pct_full=0.7 --ref_pct_full=0.1 --var_pct_phasing=0.7 --snp_min_af=0.08 --indel_min_af=0.15 --min_mq=5 --min_coverage=2 --min_contig_size=0 --pileup_only=False --gvcf=False --base_err=0.001 --gq_bin_size=5 --fast_mode=False --call_snp_only=False --enable_variant_calling_at_sequence_head_and_tail=False --output_all_contigs_in_gvcf_header=False --print_ref_calls=False --haploid_precise=False --haploid_sensitive=False --include_all_ctgs=True --no_phasing_for_fa=False --pileup_model_prefix=pileup --fa_model_prefix=full_alignment --remove_intermediate_dir=False --enable_phasing=False --enable_long_indel=False --keep_iupac_bases=False --use_gpu=False --longphase_for_phasing=False --longphase=EMPTY --use_whatshap_for_intermediate_phasing=True --use_longphase_for_intermediate_phasing=False --use_whatshap_for_final_output_phasing=False --use_longphase_for_final_output_phasing=False --use_whatshap_for_final_output_haplotagging=False
+
+[INFO] Check environment variables
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/log
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/tmp/pileup_output
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/tmp/merge_output
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/tmp/phase_output
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/tmp/gvcf_tmp_output
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/tmp/full_alignment_output
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/tmp/phase_output/phase_vcf
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/tmp/phase_output/phase_bam
+[INFO] Create folder /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/tmp/full_alignment_output/candidate_bed
+[INFO] --include_all_ctgs enabled
+[93m[WARNING] Please enable --no_phasing_for_fa if calling variant in non-diploid organisms[0m
+[INFO] Call variant in contigs: NC_002695.2 NC_002128.1 NC_002127.1
+[INFO] Chunk number for each contig: 2 1 1
+[INFO] 1/7 Call variants using pileup model
+Calling variants ...
+Total processed positions in NC_002695.2 (chunk 1/2) : 25634
+Total time elapsed: 38.89 s
+Calling variants ...
+Total processed positions in NC_002695.2 (chunk 2/2) : 26057
+Total time elapsed: 39.46 s
+Calling variants ...
+Total processed positions in NC_002128.1 (chunk 1/1) : 949
+Total time elapsed: 3.77 s
+Calling variants ...
+Total processed positions in NC_002127.1 (chunk 1/1) : 31
+Total time elapsed: 1.61 s
+
+real	1m51.127s
+user	1m20.459s
+sys	0m7.961s
+
+[INFO] 2/7 Select heterozygous SNP variants for Whatshap phasing and haplotagging
+[INFO] Select heterozygous pileup variants exceeding phasing quality cutoff 8
+[INFO] Total heterozygous SNP positions selected: NC_002695.2: 5118
+[INFO] Total heterozygous SNP positions selected: NC_002128.1: 77
+[INFO] Total heterozygous SNP positions selected: NC_002127.1: 2
+
+real	0m0.901s
+user	0m0.546s
+sys	0m0.236s
+
+[INFO] 3/7 Phase VCF file using Whatshap
+This is WhatsHap 1.7 running under Python 3.9.0
+Working on 1 sample from 1 family
+
+# Working on contig NC_002695.2 in individual SAMPLE
+Found 5118 usable heterozygous variants (0 skipped due to missing genotypes)
+Found 55275 reads covering 5118 variants
+Kept 42251 reads that cover at least two variants each
+Selected 3185 most phase-informative reads covering 5118 variants
+Phasing 1 sample by solving the MEC problem ...
+Largest block contains 3728 variants (72.8% of accessible variants) between position 154 and 5497962
+Changed 1222 genotypes while writing VCF
+
+# Resource usage
+Maximum memory usage: 0.166 GB
+Time spent reading BAM/CRAM:                    6.7 s
+Time spent parsing VCF:                         0.1 s
+Time spent selecting reads:                     3.0 s
+Time spent phasing:                            23.4 s
+Time spent writing VCF:                         0.1 s
+Time spent finding components:                  0.1 s
+Time spent on rest:                             0.1 s
+Total elapsed time:                            33.5 s
+This is WhatsHap 1.7 running under Python 3.9.0
+Working on 1 sample from 1 family
+
+# Working on contig NC_002128.1 in individual SAMPLE
+Found 77 usable heterozygous variants (0 skipped due to missing genotypes)
+Found 825 reads covering 77 variants
+Kept 585 reads that cover at least two variants each
+Selected 72 most phase-informative reads covering 77 variants
+Phasing 1 sample by solving the MEC problem ...
+Largest block contains 46 variants (59.7% of accessible variants) between position 143 and 92398
+Changed 27 genotypes while writing VCF
+
+# Resource usage
+Maximum memory usage: 0.050 GB
+Time spent reading BAM/CRAM:                    0.1 s
+Time spent parsing VCF:                         0.0 s
+Time spent selecting reads:                     0.0 s
+Time spent phasing:                             0.3 s
+Time spent writing VCF:                         0.0 s
+Time spent finding components:                  0.0 s
+Time spent on rest:                             0.0 s
+Total elapsed time:                             0.4 s
+This is WhatsHap 1.7 running under Python 3.9.0
+Working on 1 sample from 1 family
+
+# Working on contig NC_002127.1 in individual SAMPLE
+Found 2 usable heterozygous variants (0 skipped due to missing genotypes)
+Found 68 reads covering 2 variants
+Kept 43 reads that cover at least two variants each
+Selected 15 most phase-informative reads covering 2 variants
+Phasing 1 sample by solving the MEC problem ...
+Largest block contains 1 variants (50.0% of accessible variants) between position 237 and 237
+Changed 1 genotypes while writing VCF
+
+# Resource usage
+Maximum memory usage: 0.041 GB
+Time spent reading BAM/CRAM:                    0.0 s
+Time spent parsing VCF:                         0.0 s
+Time spent selecting reads:                     0.0 s
+Time spent phasing:                             0.0 s
+Time spent writing VCF:                         0.0 s
+Time spent finding components:                  0.0 s
+Time spent on rest:                             0.0 s
+Total elapsed time:                             0.0 s
+
+real	0m36.245s
+user	0m32.611s
+sys	0m0.533s
+
+[INFO] 5/7 Select candidates for full-alignment calling
+[INFO] Set variants quality cutoff 12.0
+[INFO] Set reference calls quality cutoff 8.0
+[INFO] Low quality reference calls to be processed in NC_002695.2: 4346
+[INFO] Low quality variants to be processed in NC_002695.2: 5653
+[INFO] Low quality reference calls to be processed in NC_002128.1: 84
+[INFO] Low quality variants to be processed in NC_002128.1: 87
+[INFO] Low quality reference calls to be processed in NC_002127.1: 1
+[INFO] Low quality variants to be processed in NC_002127.1: 5
+
+real	0m0.918s
+user	0m0.514s
+sys	0m0.231s
+
+[INFO] 6/7 Call low-quality variants using full-alignment model
+Calling variants ...
+Total processed positions in NC_002127.1 (chunk 1/1) : 6
+Total time elapsed: 0.81 s
+Calling variants ...
+Total processed positions in NC_002128.1 (chunk 1/1) : 171
+Total time elapsed: 2.11 s
+Calling variants ...
+Total processed positions in NC_002695.2 (chunk 1/1) : 9999
+Total time elapsed: 79.26 s
+
+real	1m37.920s
+user	1m19.609s
+sys	0m4.501s
+
+[INFO] 7/7 Merge pileup VCF and full-alignment VCF
+[INFO] Pileup variants processed in NC_002695.2: 2429
+[INFO] Full-alignment variants processed in NC_002695.2: 3461
+[INFO] Pileup variants processed in NC_002128.1: 35
+[INFO] Full-alignment variants processed in NC_002128.1: 35
+[INFO] Pileup variants processed in NC_002127.1: 0
+[INFO] Full-alignment variants processed in NC_002127.1: 2
+
+real	0m1.044s
+user	0m0.710s
+sys	0m0.298s
+
+[INFO] Finish calling, output file: /home/work/wenhai/wh-github/variant-calling-benchmark/workflow/test/tools_result/clair3/clair_res/merge_output.vcf.gz
+
+real	4m15.467s
+user	3m15.572s
+sys	0m14.175s

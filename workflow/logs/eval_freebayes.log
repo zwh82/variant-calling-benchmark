@@ -1,0 +1,5 @@
+Error: Index not found for file test/tools_result/freebayes/ecoli.vcf.gz.tbi, expected index called: test/tools_result/freebayes/ecoli.vcf.gz.tbi
+
+Usage: rtg vcfeval [OPTION]... -b FILE -c FILE -o DIR -t SDF
+
+Try '--help' for more information

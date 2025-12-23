@@ -1,0 +1,37 @@
+
+
+# reference genome
+
+ref: /home/work/wenhai/semi-denovo-asm/variant_calling/test_snv/reference/GCF_000008865.2_ASM886v2_genomic.fna
+example_name: ecoli
+
+outdir: test
+vc_env: semi-denovo-asm
+vc_env2: semi-denovo-asm2
+vc_env3: semi-denovo-asm3
+camisim_env: bio39
+
+simuG: /home/work/wenhai/wh-github/variant-calling-benchmark/tools/simuG/simuG.pl
+# default: seed rand titv_ratio 0.5 snp_count indel_count
+simuG_paras: ["201812201903 0.5 10000 1000", "201912201903 1.0 10000 1000", "202012201903 1.5 10000 1000", "202112201903 2.0 10000 1000", "202212201903 2.5 10000 1000"]
+  
+## camsisim 
+## The source code of CAMISIM has been modified to accommodate error profiles from different sequencing technologies.
+camisim_path: /home/wenhai/application/camisim/CAMISIM/metagenomesimulation.py
+config_ini: camisim_configs/example_ontR104.ini
+distribution: [0.1452450034900253, 0.16316344435436944, 0.18763516399992186, 0.23163665847473633, 0.272319729680947]
+size: 0.4258404518665291
+
+# threads
+align_threads: 64
+work_threads: 16
+
+vc_tools: [
+  "freebayes",
+  "gatk",
+  "longshot",
+  "snippy",
+  "clair3"
+]
+
+clair3_ontR10_model: /home/work/wenhai/semi-denovo-asm/variant_calling/tools/rerio/clair3_models/r1041_e82_400bps_sup_v410
