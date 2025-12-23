@@ -1,0 +1,6 @@
+workflow/test*
+.snakemake
+workflow/rtg_example_test/eval*
+workflow/rtg_example_test/*vcf*
+workflow/gurobi.log
+workflow/nohup.out
